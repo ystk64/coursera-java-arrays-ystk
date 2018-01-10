@@ -1,24 +1,8 @@
 import org.junit.Test;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class CaesarCipher {
-
-    final String FILENAME = "output.txt";
-
-    BufferedWriter writer;
-
-    {
-        try {
-            writer = new BufferedWriter(new FileWriter(FILENAME, true));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void encrypt(String phrase, int key){
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -106,18 +90,8 @@ public class CaesarCipher {
                 } else decryptedString.append(decryptedChar);
             } else decryptedString.append(c);
         }
-        try {
-            writeToFile(encryptKey + " " + decryptedString);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         System.out.println(encryptKey + " " + decryptedString);
     }
-
-    public void writeToFile(String input) throws IOException{
-        writer.append(input);
-    }
-
 
     public void bruteForce(String encryptedPhrase) {
         int decryptkey = 0;
